@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beasiswa Management System</title>
+ 
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+ 
+    <nav class="bg-blue-500 p-4">
+        <div class="container mx-auto">
+            <div class="flex items-center justify-between">
+                <div>
+                    <a href="/" class="text-white font-bold text-xl">Beasiswa Management System</a>
+                </div>
+                <div>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'beasiswa_app:profile' %}"
+                        class="text-white px-4 py-2 rounded-md hover:bg-blue-600">Profil</a>
+                    <a href="{% url 'beasiswa_app:status_beasiswa' %}"
+                        class="text-white px-4 py-2 rounded-md hover:bg-blue-600">Status Beasiswa</a>
+                    <a href="{% url 'beasiswa_app:logout' %}" class="text-white px-4 py-2 rounded-md hover:bg-blue-600">Logout</a>
+                    {% else %}
+                    <a href="{% url 'beasiswa_app:login' %}" class="text-white px-4 py-2 rounded-md hover:bg-blue-600">Login</a>
+                    <a href="{% url 'beasiswa_app:register' %}"
+                        class="text-white px-4 py-2 rounded-md hover:bg-blue-600">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+ 
+    <div class="container mx-auto py-8">
+        {% block content %}
+        {% endblock %}
+    </div>
+ 
+    <footer class="bg-blue-500 p-4 text-white text-center">
+        <p class="text-sm">Hak Cipta &copy; 2023 Beasiswa Management System. Didesain dengan ❤️ oleh Kandang ulo .</p>
+        <p class="text-sm">Kontak: Adham Cahyo - Email: adham.cahyo@example.com - No. HP: 08123456789</p>
+    </footer>
+ 
+    <script type="text/python">
+        from pywebcopy import save_webpage
+ 
+        save_webpage('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css', 'static/css')
+    </script>
+
+</body>
+
+</html>

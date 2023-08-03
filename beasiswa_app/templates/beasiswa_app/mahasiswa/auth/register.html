@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Daftar - Sistem Manajemen Beasiswa
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold my-4">Daftar</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="my-4">
+            <label for="{{ form.username.id_for_label }}" class="block font-bold mb-2">Nama Pengguna:</label>
+            {{ form.username }}
+        </div>
+        <div class="my-4">
+            <label for="{{ form.email.id_for_label }}" class="block font-bold mb-2">Email:</label>
+            {{ form.email }}
+        </div>
+        <div class="my-4">
+            <label for="{{ form.password.id_for_label }}" class="block font-bold mb-2">Kata Sandi:</label>
+            {{ form.password }}
+        </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Daftar</button>
+    </form>
+{% endblock %}

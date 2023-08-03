@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Beasiswa Management System - Home
+{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold text-center">Selamat datang di Beasiswa Management System!</h1>
+        <p class="text-center mt-4">Aplikasi ini membantu Anda dalam mengelola beasiswa untuk mahasiswa.</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div class="border p-4">
+                <h2 class="text-xl font-bold mb-2">Tentang Beasiswa</h2>
+                <p>Beasiswa adalah bantuan keuangan yang diberikan kepada mahasiswa untuk membantu dalam pendanaan studi mereka. Beasiswa dapat diberikan oleh pemerintah, perusahaan, atau lembaga lainnya.</p>
+            </div>
+
+            <div class="border p-4">
+                <h2 class="text-xl font-bold mb-2">Cara Mengajukan Beasiswa</h2>
+                <p>Untuk mengajukan beasiswa, mahasiswa perlu mengisi formulir permohonan beasiswa dan menyertakan dokumen-dokumen yang dibutuhkan. Permohonan akan diproses oleh pihak pengelola beasiswa.</p>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="{% url 'beasiswa_app:beasiswa_list' %}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Lihat Daftar Beasiswa</a>
+        </div>
+    </div>
+{% endblock %}

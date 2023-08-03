@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Masuk - Sistem Manajemen Beasiswa
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold my-4">Masuk</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="my-4">
+            <label for="{{ form.username.id_for_label }}" class="block font-bold mb-2">Nama Pengguna:</label>
+            {{ form.username }}
+        </div>
+        <div class="my-4">
+            <label for="{{ form.password.id_for_label }}" class="block font-bold mb-2">Kata Sandi:</label>
+            {{ form.password }}
+        </div>
+        {% if form.errors %}
+            <div class="text-red-500">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Masuk</button>
+    </form>
+{% endblock %}
