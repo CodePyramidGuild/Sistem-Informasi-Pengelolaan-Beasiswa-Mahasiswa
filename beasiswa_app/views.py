@@ -22,6 +22,9 @@ def apply_beasiswa(request):
     return render(request, 'beasiswa_app/mahasiswa/apply_beasiswa.html', {'form': form})
 
 def status_beasiswa(request):
+    if not request.user.is_authenticated:
+        return redirect('beasiswa_app:login')
+
     mahasiswa = Mahasiswa.objects.get(pk=request.user.id)
     status_beasiswa = Beasiswa.objects.filter(pemohon=mahasiswa)
     return render(request, 'beasiswa_app/mahasiswa/status_beasiswa.html', {'status_beasiswa': status_beasiswa})
@@ -32,9 +35,11 @@ def profile(request):
         form = MahasiswaForm(request.POST, instance=request.user.mahasiswa)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Profil berhasil diperbarui.')
     else:
         form = MahasiswaForm(instance=request.user.mahasiswa)
     return render(request, 'beasiswa_app/mahasiswa/profile.html', {'form': form})
+
 
 
 @login_required(login_url='beasiswa_app:login')
@@ -68,6 +73,7 @@ def mahasiswa_login(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+             
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
