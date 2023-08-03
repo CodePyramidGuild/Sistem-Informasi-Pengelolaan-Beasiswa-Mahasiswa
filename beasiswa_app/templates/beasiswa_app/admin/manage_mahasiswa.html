@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Kelola Beasiswa
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold my-4">Kelola Beasiswa</h1>
+    <ul>
+        {% for beasiswa in beasiswa_list %}
+            <li class="border p-4 my-4">
+                <h2 class="text-xl font-bold">{{ beasiswa.nama }}</h2>
+                <p>{{ beasiswa.deskripsi }}</p>
+                <p>Tanggal Mulai: {{ beasiswa.tanggal_mulai }}</p>
+                <p>Tanggal Selesai: {{ beasiswa.tanggal_selesai }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Kelola Mahasiswa
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-3xl font-bold my-4">Kelola Mahasiswa</h1>
+    <ul>
+        {% for mahasiswa in mahasiswa_list %}
+            <li class="border p-4 my-4">
+                <h2 class="text-xl font-bold">{{ mahasiswa.nama }}</h2>
+                <p>NIM: {{ mahasiswa.nim }}</p>
+                <p>Email: {{ mahasiswa.email }}</p>
+                <p>Alamat: {{ mahasiswa.alamat }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
